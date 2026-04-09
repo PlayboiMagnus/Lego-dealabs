@@ -55,29 +55,37 @@ This project implements a web application that scrapes Lego deals from Dealabs a
 - Node.js (v14 or higher)
 - npm
 
-### Installation
+### Installation and Startup 🚀
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/lego-dealabs.git
-   cd lego-dealabs
-   ```
-
-2. Install server dependencies:
-   ```sh
+**Step 1: Start the Backend server**
+1. Open up a terminal / command prompt.
+2. Navigate to your server folder:
+   ```bash
    cd server
+   ```
+3. Install the node modules (if you haven't already):
+   ```bash
    npm install
    ```
-
-3. Start the API server:
-   ```sh
-   npm start
+4. Start the API server:
+   ```bash
+   node api.js
    ```
-   The server will run on http://localhost:3000
+   *You should see a message saying "API server running on http://localhost:3000" in your terminal. Leave this terminal open!*
 
-4. Open the client in your browser:
-   - Open `client/v2/index.html` in your web browser
-   - The interface will connect to the API to load deals
+**Step 2: Open the Frontend**
+Since the frontend is built using standard HTML/JS, no separate server is needed.
+Simply navigate to `client/v2/` in your File Explorer and **double-click** the `index.html` file to open it directly in your web browser. It will automatically connect to your local API server.
+
+### 📸 Screenshots
+
+*(Replace the placeholder links below with your actual screenshot images once you take them!)*
+
+![Main Interface](./path/to/your/screenshot1.png)
+*Caption: Browsing Deals and filtering results*
+
+![Sales Interface](./path/to/your/screenshot2.png)
+*Caption: Checking individual Vinted sales for a specific Lego set*
 
 ### API Endpoints
 
