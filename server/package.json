@@ -1,0 +1,18 @@
+{
+  "name": "lego-dealabs-server",
+  "version": "1.0.0",
+  "description": "Server for Lego deals scraping and API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "sale1",
+    "link": "https://www.vinted.fr/items/12345-lego-12345",
+    "price": 85,
+    "title": "Lego 12345 used",
+    "published": 1774289098.327
+  },
+  {
+    "_id": "sale2",
+    "link": "https://www.vinted.fr/items/67890-lego-67890",
+    "price": 160,
+    "title": "Lego 67890 new",
+    "published": 1774289098.327
+  }
+]

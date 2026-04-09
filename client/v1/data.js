@@ -48,3 +48,7 @@ const sales = [
     "published": 1641081600
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { deals, sales };
+}

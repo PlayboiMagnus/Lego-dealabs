@@ -48,6 +48,53 @@ This project implements a web application that scrapes Lego deals from Dealabs a
 - Scraping: Cheerio, Node-fetch
 - Data storage: JSON files (can be extended to database)
 
-## 📝 Licence
+## � Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/lego-dealabs.git
+   cd lego-dealabs
+   ```
+
+2. Install server dependencies:
+   ```sh
+   cd server
+   npm install
+   ```
+
+3. Start the API server:
+   ```sh
+   npm start
+   ```
+   The server will run on http://localhost:3000
+
+4. Open the client in your browser:
+   - Open `client/v2/index.html` in your web browser
+   - The interface will connect to the API to load deals
+
+### API Endpoints
+
+- `GET /deals` - Get all deals
+- `GET /deals/:id` - Get deal by Lego set ID
+- `GET /deals/search` - Search/filter deals
+- `GET /sales/search` - Search sales by set ID
+- `POST /scrape/deals` - Scrape new deals
+- `POST /scrape/sales/:setId` - Scrape sales for a set
+
+### Usage
+
+1. The main interface loads deals from the API
+2. Use filters to find deals with high discounts or hot deals
+3. Select a Lego set ID and load sales data to compare prices
+4. View price statistics to determine if a deal is profitable
+
+## �📝 Licence
 
 Uncopyrighted

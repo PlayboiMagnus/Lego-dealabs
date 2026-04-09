@@ -1,0 +1,195 @@
+// Portfolio.js - Lego Deals Interface
+
+let currentDeals = [];
+let currentPage = 1;
+let itemsPerPage = 6;
+let selectedSetId = null;
+let currentSales = [];
+
+// API base URL
+const API_BASE = 'http://localhost:3000';
+
+// Initialize
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDeals();
+  populateLegoSetIds();
+  displayDeals();
+  updateIndicators();
+  setupEventListeners();
+});
+
+async function loadDeals() {
+  try {
+    const response = await fetch(`${API_BASE}/deals`);
+    currentDeals = await response.json();
+  } catch (error) {
+    console.error('Failed to load deals:', error);
+    // Fallback to local data
+    currentDeals = deals;
+  }
+}
+
+function setupEventListeners() {
+  // Show select
+  document.getElementById('show-select').addEventListener('change', (e) => {
+    itemsPerPage = parseInt(e.target.value);
+    displayDeals();
+  });
+
+  // Page select
+  document.getElementById('page-select').addEventListener('change', (e) => {
+    currentPage = parseInt(e.target.value);
+    displayDeals();
+  });
+
+  // Filters
+  document.getElementById('best-discount').addEventListener('click', () => {
+    filterDeals({ minDiscount: 20 });
+  });
+
+  document.getElementById('most-commented').addEventListener('click', () => {
+    filterDeals({ minTemp: 150 }); // Assuming hot deals have high temp
+  });
+
+  document.getElementById('hot-deals').addEventListener('click', () => {
+    filterDeals({ minTemp: 100 });
+  });
+
+  // Sort
+  document.getElementById('sort-select').addEventListener('change', (e) => {
+    const sortBy = e.target.value;
+    sortDeals(sortBy);
+  });
+
+  // Lego set select
+  document.getElementById('lego-set-id-select').addEventListener('change', (e) => {
+    selectedSetId = e.target.value;
+  });
+
+  // Load sales
+  document.getElementById('load-sales').addEventListener('click', () => {
+    if (selectedSetId) {
+      loadSalesForSet(selectedSetId);
+    }
+  });
+}
+
+async function filterDeals(filters) {
+  try {
+    const params = new URLSearchParams(filters);
+    const response = await fetch(`${API_BASE}/deals/search?${params}`);
+    currentDeals = await response.json();
+    displayDeals();
+  } catch (error) {
+    console.error('Failed to filter deals:', error);
+  }
+}
+
+async function sortDeals(sortBy) {
+  try {
+    const response = await fetch(`${API_BASE}/deals/search?sort=${sortBy}`);
+    currentDeals = await response.json();
+    displayDeals();
+  } catch (error) {
+    console.error('Failed to sort deals:', error);
+  }
+}
+
+function populateLegoSetIds() {
+  const select = document.getElementById('lego-set-id-select');
+  const uniqueIds = [...new Set(currentDeals.map(deal => deal.id))];
+  uniqueIds.forEach(id => {
+    const option = document.createElement('option');
+    option.value = id;
+    option.textContent = id;
+    select.appendChild(option);
+  });
+}
+
+function displayDeals() {
+  const container = document.getElementById('deals-container');
+  container.innerHTML = '';
+
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const dealsToShow = currentDeals.slice(start, end);
+
+  dealsToShow.forEach(deal => {
+    const dealDiv = document.createElement('div');
+    dealDiv.className = 'deal';
+    dealDiv.innerHTML = `
+      <h3>${deal.title}</h3>
+      <img src="${deal.photo}" alt="${deal.title}">
+      <p>Price: €${deal.price} (was €${deal.retail})</p>
+      <p>Discount: ${deal.discount}%</p>
+      <p>Temperature: ${deal.temperature}</p>
+      <p>Comments: ${deal.comments}</p>
+      <a href="${deal.link}" target="_blank">View Deal</a>
+    `;
+    container.appendChild(dealDiv);
+  });
+
+  updatePageSelect();
+}
+
+function updatePageSelect() {
+  const select = document.getElementById('page-select');
+  select.innerHTML = '';
+  const totalPages = Math.ceil(currentDeals.length / itemsPerPage);
+  for (let i = 1; i <= totalPages; i++) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i;
+    if (i === currentPage) option.selected = true;
+    select.appendChild(option);
+  }
+}
+
+async function loadSalesForSet(setId) {
+  try {
+    const response = await fetch(`${API_BASE}/sales/search?setId=${setId}`);
+    currentSales = await response.json();
+    displaySales();
+    updateSalesIndicators();
+  } catch (error) {
+    console.error('Failed to load sales:', error);
+  }
+}
+
+function displaySales() {
+  const container = document.getElementById('sales-container');
+  container.innerHTML = '';
+
+  currentSales.forEach(sale => {
+    const saleDiv = document.createElement('div');
+    saleDiv.className = 'deal';
+    saleDiv.innerHTML = `
+      <h3>${sale.title}</h3>
+      <p>Price: €${sale.price}</p>
+      <a href="${sale.link}" target="_blank">View Sale</a>
+    `;
+    container.appendChild(saleDiv);
+  });
+}
+
+function updateIndicators() {
+  document.getElementById('nbDeals').textContent = currentDeals.length;
+  document.getElementById('nbSales').textContent = currentSales.length;
+}
+
+function updateSalesIndicators() {
+  document.getElementById('nbSales').textContent = currentSales.length;
+
+  if (currentSales.length > 0) {
+    const prices = currentSales.map(s => s.price).sort((a, b) => a - b);
+    const p5 = prices[Math.floor(prices.length * 0.05)] || 0;
+    const p25 = prices[Math.floor(prices.length * 0.25)] || 0;
+    const p50 = prices[Math.floor(prices.length * 0.5)] || 0;
+    const avg = prices.reduce((sum, p) => sum + p, 0) / prices.length;
+
+    document.getElementById('p5Price').textContent = p5;
+    document.getElementById('p25Price').textContent = p25;
+    document.getElementById('p50Price').textContent = p50;
+    document.getElementById('avgPrice').textContent = avg.toFixed(2);
+  }
+}

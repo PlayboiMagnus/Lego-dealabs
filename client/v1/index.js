@@ -1,6 +1,8 @@
 // Lego Deals Analysis
 // Workshop 1: Manipulate data with JavaScript
 
+const { deals, sales } = require('./data.js');
+
 // TODO 1: Compute the number of deals
 console.log('Number of deals:', deals.length);
 
