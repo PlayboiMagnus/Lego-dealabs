@@ -3,119 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theo's Legos | Promotions et Bons Plans</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Theo's Legos | Dark Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <!-- Top Navigation Bar -->
-    <header class="adlb-header">
+    <header class="dark-header">
       <div class="header-container">
         <div class="logo">
-          <h1>Theo's Legos</h1>
-          <span class="subtitle">Promotions et Bons Plans LEGO®</span>
+          <h1>THEO'S LEGOS</h1>
         </div>
       </div>
     </header>
 
-    <main class="adlb-main">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb">
-        <span>Accueil</span> &gt; <span>Lego Deals</span> &gt; <strong>Promotions en cours</strong>
-      </nav>
-
-      <div class="layout-grid">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <div class="filter-box">
-            <h3>Affiner la recherche</h3>
-            
-            <div class="filter-section">
-              <h4>🎯 Affichage</h4>
-              <label for="show-select">Résultats par page:</label>
-              <select name="show" id="show-select">
-                <option value="6">6 annonces</option>
-                <option value="12">12 annonces</option>
-                <option value="24">24 annonces</option>
-              </select>
-            </div>
-
-            <div class="filter-section">
-              <h4>📄 Pagination</h4>
-              <label for="page-select">Aller à la page:</label>
-              <select name="page" id="page-select"></select>
-            </div>
-
-            <div class="filter-section">
-              <h4>🔥 Filtres rapides</h4>
-              <div id="filters" class="button-stack">
-                <button id="best-discount" class="btn-outline">Les -50% et +</button>
-                <button id="most-commented" class="btn-outline">Les + Commentés</button>
-                <button id="hot-deals" class="btn-outline">Les + Chauds</button>
-              </div>
-            </div>
-
-            <div class="filter-section">
-              <h4>📉 Trier par</h4>
-              <select name="sort" id="sort-select">
-                <option value="price-asc">Prix croissant</option>
-                <option value="price-desc">Prix décroissant</option>
-                <option value="date-asc">Plus récents</option>
-                <option value="date-desc">Plus anciens</option>
-              </select>
-            </div>
-
-            <div class="filter-section highlight-box" style="margin-bottom:15px;">
-              <h4>Base de données</h4>
-              <button id="scrape-deals" class="btn-action" style="background:#D52B1E; color:#fff;">Scraper les offres!</button>
-            </div>
-
-            <div class="filter-section highlight-box">
-              <h4>Rechercher un Set Vinted</h4>
-              <label>ID du Set LEGO®:</label>
-              <select id="lego-set-id-select"></select>
-              <button id="load-sales" class="btn-action">Analyser les prix</button>
-            </div>
-          </div>
-
-          <!-- Market Indicators Panel -->
-          <div class="filter-box market-stats">
-            <h3>Statistiques du Marché</h3>
-            <ul class="stats-list">
-              <li><strong>Deals Actifs:</strong> <span id="nbDeals">0</span></li>
-              <li><strong>Ventes Vinted:</strong> <span id="nbSales">0</span></li>
-              <li><strong>Prix P5 (Bas):</strong> <span id="p5Price" class="price-val">0€</span></li>
-              <li><strong>Prix P25 (Médian):</strong> <span id="p25Price" class="price-val">0€</span></li>
-              <li><strong>Prix P50 (Haut):</strong> <span id="p50Price" class="price-val">0€</span></li>
-              <li><strong>Prix Moyen:</strong> <span id="avgPrice" class="price-val">0€</span></li>
-            </ul>
-          </div>
-        </aside>
-
-        <!-- Product Grid Container -->
-        <div class="content-area">
-          <div class="deals-header">
-            <h2>Les meilleures promos LEGO® du moment</h2>
-            <p>Retrouvez toutes les boîtes LEGO® en promotion ou en déstockage. Les prix sont mis à jour en temps réel.</p>
-          </div>
-
-          <div id="deals-container" class="products-grid">
-            <!-- Deals injected via portfolio.js -->
-          </div>
-
-          <!-- Vinted Sales Section -->
-          <div class="sales-section">
-            <h2 class="sales-title">Marché de l'Occasion - Annonces Vinted</h2>
-            <div id="sales-container" class="sales-grid">
-              <!-- Sales injected via portfolio.js -->
-            </div>
-          </div>
-        </div>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h2>Découvrez les meilleures affaires LEGO®</h2>
+        <p>Economisez sur vos prochains sets</p>
       </div>
+    </section>
+
+    <main class="dark-main">
+      <!-- Horizontal Filters Bar -->
+      <section class="filters-bar">
+        <!-- Display / Pagination -->
+        <div class="filter-group">
+          <label>Affichage:</label>
+          <select id="show-select">
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
+          </select>
+          <label>Page:</label>
+          <select id="page-select"></select>
+        </div>
+
+        <!-- Sort -->
+        <div class="filter-group">
+          <label>Trier:</label>
+          <select id="sort-select">
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="date-asc">Plus récents</option>
+            <option value="date-desc">Plus anciens</option>
+          </select>
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="filter-group quick-filters" id="filters">
+          <button id="best-discount" class="btn-filter">Les -50%</button>
+          <button id="most-commented" class="btn-filter">Les + Commentés</button>
+          <button id="hot-deals" class="btn-filter">Hot Deals</button>
+        </div>
+
+        <div class="filter-group scrape-group">
+          <button id="scrape-deals" class="btn-action">Scraper Dealabs</button>
+        </div>
+      </section>
+
+      <!-- Stats Bar -->
+      <section class="stats-bar">
+        <div class="stat-container">
+          <label>Deals:</label> <span id="nbDeals" class="stat-highlight">0</span>
+        </div>
+        <div class="stat-container">
+          <label>Set ID (Vinted):</label>
+          <select id="lego-set-id-select"></select>
+          <button id="load-sales" class="btn-filter mini">Analyser</button>
+        </div>
+        <div class="stat-container">
+          <label>Ventes:</label> <span id="nbSales" class="stat-highlight">0</span>
+        </div>
+        <div class="stat-container">
+          <label>Moyenne:</label> <span id="avgPrice" class="stat-highlight">0€</span>
+        </div>
+        <div class="stat-container">
+          <label>P5 / P25 / P50:</label> 
+          <span class="stat-highlight"><span id="p5Price">0</span> | <span id="p25Price">0</span> | <span id="p50Price">0</span></span>
+        </div>
+      </section>
+
+      <!-- Deals Grid -->
+      <section class="deals-section">
+        <h2 class="section-title">All Deals</h2>
+        <div id="deals-container" class="products-grid">
+          <!-- Deals injected via portfolio.js -->
+        </div>
+      </section>
+
+      <!-- Sales Grid -->
+      <section class="sales-section">
+        <h2 class="section-title">Vinted Market Sales</h2>
+        <div id="sales-container" class="products-grid sales-grid">
+          <!-- Sales injected via portfolio.js -->
+        </div>
+      </section>
     </main>
 
-    <footer class="adlb-footer">
-      <p>© 2026 Theo's Legos - Le comparateur de prix 100% LEGO®</p>
+    <footer class="dark-footer">
+      <p>© 2026 Theo's Legos - Dark Edition</p>
     </footer>
 
     <script type="text/javascript" charset="UTF-8" src="data.js"></script>
