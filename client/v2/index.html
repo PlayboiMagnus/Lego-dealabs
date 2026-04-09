@@ -1,90 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>🧱 Lego | Predictability of a lego set deal</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 20px; }
-      section { margin-bottom: 20px; }
-      select, button { margin: 5px; padding: 5px; }
-      .deal { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
-      .deal img { max-width: 100px; }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lego Market Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>Lego Deals</h1>
-    <section id="options">
-      <div id="show">
-        <label for="show-select">Show:</label>
-        <select name="show" id="show-select">
-          <option value="6">6</option>
-          <option value="12">12</option>
-          <option value="24">24</option>
-        </select>
+    <header class="app-header">
+      <h1>🧱 Lego Market Analytics</h1>
+      <p>Discover predictability and profitability of the best Lego sets.</p>
+    </header>
+
+    <main class="dashboard">
+      <!-- Sidebar / Controls -->
+      <aside class="controls-panel">
+        <section class="control-group">
+          <h3>Display Settings</h3>
+          <div class="control-item">
+            <label for="show-select">Show per page:</label>
+            <select name="show" id="show-select" class="premium-select">
+              <option value="6">6</option>
+              <option value="12">12</option>
+              <option value="24">24</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label for="page-select">Go to page:</label>
+            <select name="page" id="page-select" class="premium-select"> </select>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h3>Filters & Sorting</h3>
+          <div id="filters" class="button-group">
+            <button id="best-discount" class="premium-btn">🏷️ Best Discount</button>
+            <button id="most-commented" class="premium-btn">💬 Most Commented</button>
+            <button id="hot-deals" class="premium-btn">🔥 Hot Deals</button>
+          </div>
+          <div class="control-item" style="margin-top: 15px;">
+            <label for="sort-select">Sort by:</label>
+            <select name="sort" id="sort-select" class="premium-select">
+              <option value="price-asc">Cheapest First</option>
+              <option value="price-desc">Most Expensive</option>
+              <option value="date-asc">Recently Published</option>
+              <option value="date-desc">Oldest Published</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h3>Market Analysis</h3>
+          <div class="control-item">
+            <label>Select a Lego ID:</label>
+            <select id="lego-set-id-select" class="premium-select"></select>
+            <button id="load-sales" class="premium-btn primary" style="margin-top: 10px;">Load Sales Data</button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <!-- Indicators -->
+        <section id="indicators" class="indicators-grid">
+          <div class="indicator-card">
+            <div class="val" id="nbDeals">0</div>
+            <div class="label">Total Deals</div>
+          </div>
+          <div class="indicator-card">
+            <div class="val" id="nbSales">0</div>
+            <div class="label">Total Vinted Sales</div>
+          </div>
+          <div class="indicator-card">
+            <div class="val" id="p5Price">0€</div>
+            <div class="label">P5 Market Price</div>
+          </div>
+          <div class="indicator-card">
+            <div class="val" id="p25Price">0€</div>
+            <div class="label">P25 Market Price</div>
+          </div>
+          <div class="indicator-card">
+            <div class="val" id="p50Price">0€</div>
+            <div class="label">P50 Market Price</div>
+          </div>
+          <div class="indicator-card">
+            <div class="val" id="avgPrice">0€</div>
+            <div class="label">Average Sale Price</div>
+          </div>
+        </section>
+
+        <!-- Deals & Sales grids -->
+        <section class="results-layout">
+          <div class="deals-section">
+            <h2 class="section-title">Active Deals</h2>
+            <div id="deals-container" class="deals-grid">
+              <!-- Deals injected here via js -->
+            </div>
+          </div>
+
+          <div class="sales-section">
+            <h2 class="section-title">Vinted Market Data <small>(Current Set)</small></h2>
+            <div id="sales-container" class="sales-grid">
+              <!-- Sales injected here via js -->
+            </div>
+          </div>
+        </section>
       </div>
-      <div id="page">
-        <label for="page-select">Go to page:</label>
-        <select name="page" id="page-select"> </select>
-      </div>
-      <div id="filters">
-        <button id="best-discount">By best discount</button>
-        <button id="most-commented">By most commented</button>
-        <button id="hot-deals">By hot deals</button>
-      </div>
-      <div id="sort">
-        <label for="sort-select">Sort:</label>
-        <select name="sort" id="sort-select">
-          <option value="price-asc">Cheaper</option>
-          <option value="price-desc">Expensive</option>
-          <option value="date-asc">Recently published</option>
-          <option value="date-desc">Anciently published</option>
-        </select>
-      </div>
-    </section>
-    <section id="lego">
-      <h2>Lego sets</h2>
-      <div>
-        <label>Lego set id:</label>
-        <select id="lego-set-id-select"></select>
-        <button id="load-sales">Load Sales</button>
-      </div>
-    </section>
-    <section id="indicators">
-      <h2>Indicators</h2>
-      <div>
-        <span>Number of deals</span>
-        <span id="nbDeals">0</span>
-      </div>
-      <div>
-        <span>Number of sales</span>
-        <span id="nbSales">0</span>
-      </div>
-      <div>
-        <span>p5 sales price value</span>
-        <span id="p5Price">0</span>
-      </div>
-      <div>
-        <span>p25 sales price value</span>
-        <span id="p25Price">0</span>
-      </div>
-      <div>
-        <span>p50 sales price value</span>
-        <span id="p50Price">0</span>
-      </div>
-      <div>
-        <span>Average sales price</span>
-        <span id="avgPrice">0</span>
-      </div>
-    </section>
-    <section id="deals">
-      <h2>Deals</h2>
-      <div id="deals-container"></div>
-    </section>
-    <section id="sales">
-      <h2>Sales</h2>
-      <div id="sales-container"></div>
-    </section>
-    <script type="text/javascript" charset="UTF-8" src="data.js"></script>
+    </main>
+
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>
 </html>
