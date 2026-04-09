@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const dealabs = require('./websites/dealabs');
+const vinted = require('./websites/vinted');
 
 // Mock data for demonstration
 const mockDeals = [
@@ -33,17 +35,23 @@ const mockSales = [
 
 // Scrape deals from Dealabs
 async function scrapeDeals() {
-  // TODO: Implement real scraping from https://www.dealabs.com/groupe/lego
-  // For now, return mock data
   console.log('Scraping deals from Dealabs...');
+  const deals = await dealabs.scrape('https://www.dealabs.com/groupe/lego');
+  if (deals && deals.length > 0) {
+    return deals;
+  }
+  console.log('Warning: No deals scraped from Dealabs. Returning mock fallback data...');
   return mockDeals;
 }
 
 // Scrape sales from Vinted
 async function scrapeSales(setId) {
-  // TODO: Implement real scraping from https://www.vinted.fr/catalog?search_text=lego%20${setId}
-  // For now, return mock data
   console.log(`Scraping sales for Lego set ${setId} from Vinted...`);
+  const sales = await vinted.scrape(`lego ${setId}`);
+  if (sales && sales.length > 0) {
+    return sales;
+  }
+  console.log('Warning: Vinted returned no data (likely missing cookie). Using mock fallback data...');
   return mockSales.filter(sale => sale.title.includes(setId));
 }
 
