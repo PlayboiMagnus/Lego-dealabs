@@ -3,111 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lego Market Predictor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Theo's Legos | Promotions et Bons Plans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <header class="app-header">
-      <h1>🧱 Lego Market Analytics</h1>
-      <p>Discover predictability and profitability of the best Lego sets.</p>
+    <!-- Top Navigation Bar -->
+    <header class="adlb-header">
+      <div class="header-container">
+        <div class="logo">
+          <h1>Theo's Legos</h1>
+          <span class="subtitle">Promotions et Bons Plans LEGO®</span>
+        </div>
+      </div>
     </header>
 
-    <main class="dashboard">
-      <!-- Sidebar / Controls -->
-      <aside class="controls-panel">
-        <section class="control-group">
-          <h3>Display Settings</h3>
-          <div class="control-item">
-            <label for="show-select">Show per page:</label>
-            <select name="show" id="show-select" class="premium-select">
-              <option value="6">6</option>
-              <option value="12">12</option>
-              <option value="24">24</option>
-            </select>
-          </div>
-          <div class="control-item">
-            <label for="page-select">Go to page:</label>
-            <select name="page" id="page-select" class="premium-select"> </select>
-          </div>
-        </section>
+    <main class="adlb-main">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <span>Accueil</span> &gt; <span>Lego Deals</span> &gt; <strong>Promotions en cours</strong>
+      </nav>
 
-        <section class="control-group">
-          <h3>Filters & Sorting</h3>
-          <div id="filters" class="button-group">
-            <button id="best-discount" class="premium-btn">🏷️ Best Discount</button>
-            <button id="most-commented" class="premium-btn">💬 Most Commented</button>
-            <button id="hot-deals" class="premium-btn">🔥 Hot Deals</button>
-          </div>
-          <div class="control-item" style="margin-top: 15px;">
-            <label for="sort-select">Sort by:</label>
-            <select name="sort" id="sort-select" class="premium-select">
-              <option value="price-asc">Cheapest First</option>
-              <option value="price-desc">Most Expensive</option>
-              <option value="date-asc">Recently Published</option>
-              <option value="date-desc">Oldest Published</option>
-            </select>
-          </div>
-        </section>
+      <div class="layout-grid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="filter-box">
+            <h3>Affiner la recherche</h3>
+            
+            <div class="filter-section">
+              <h4>🎯 Affichage</h4>
+              <label for="show-select">Résultats par page:</label>
+              <select name="show" id="show-select">
+                <option value="6">6 annonces</option>
+                <option value="12">12 annonces</option>
+                <option value="24">24 annonces</option>
+              </select>
+            </div>
 
-        <section class="control-group">
-          <h3>Market Analysis</h3>
-          <div class="control-item">
-            <label>Select a Lego ID:</label>
-            <select id="lego-set-id-select" class="premium-select"></select>
-            <button id="load-sales" class="premium-btn primary" style="margin-top: 10px;">Load Sales Data</button>
-          </div>
-        </section>
-      </aside>
+            <div class="filter-section">
+              <h4>📄 Pagination</h4>
+              <label for="page-select">Aller à la page:</label>
+              <select name="page" id="page-select"></select>
+            </div>
 
-      <!-- Main Content Area -->
-      <div class="main-content">
-        <!-- Indicators -->
-        <section id="indicators" class="indicators-grid">
-          <div class="indicator-card">
-            <div class="val" id="nbDeals">0</div>
-            <div class="label">Total Deals</div>
-          </div>
-          <div class="indicator-card">
-            <div class="val" id="nbSales">0</div>
-            <div class="label">Total Vinted Sales</div>
-          </div>
-          <div class="indicator-card">
-            <div class="val" id="p5Price">0€</div>
-            <div class="label">P5 Market Price</div>
-          </div>
-          <div class="indicator-card">
-            <div class="val" id="p25Price">0€</div>
-            <div class="label">P25 Market Price</div>
-          </div>
-          <div class="indicator-card">
-            <div class="val" id="p50Price">0€</div>
-            <div class="label">P50 Market Price</div>
-          </div>
-          <div class="indicator-card">
-            <div class="val" id="avgPrice">0€</div>
-            <div class="label">Average Sale Price</div>
-          </div>
-        </section>
+            <div class="filter-section">
+              <h4>🔥 Filtres rapides</h4>
+              <div id="filters" class="button-stack">
+                <button id="best-discount" class="btn-outline">Les -50% et +</button>
+                <button id="most-commented" class="btn-outline">Les + Commentés</button>
+                <button id="hot-deals" class="btn-outline">Les + Chauds</button>
+              </div>
+            </div>
 
-        <!-- Deals & Sales grids -->
-        <section class="results-layout">
-          <div class="deals-section">
-            <h2 class="section-title">Active Deals</h2>
-            <div id="deals-container" class="deals-grid">
-              <!-- Deals injected here via js -->
+            <div class="filter-section">
+              <h4>📉 Trier par</h4>
+              <select name="sort" id="sort-select">
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="date-asc">Plus récents</option>
+                <option value="date-desc">Plus anciens</option>
+              </select>
+            </div>
+
+            <div class="filter-section highlight-box">
+              <h4>Rechercher un Set Vinted</h4>
+              <label>ID du Set LEGO®:</label>
+              <select id="lego-set-id-select"></select>
+              <button id="load-sales" class="btn-action">Analyser les prix</button>
             </div>
           </div>
 
+          <!-- Market Indicators Panel -->
+          <div class="filter-box market-stats">
+            <h3>Statistiques du Marché</h3>
+            <ul class="stats-list">
+              <li><strong>Deals Actifs:</strong> <span id="nbDeals">0</span></li>
+              <li><strong>Ventes Vinted:</strong> <span id="nbSales">0</span></li>
+              <li><strong>Prix P5 (Bas):</strong> <span id="p5Price" class="price-val">0€</span></li>
+              <li><strong>Prix P25 (Médian):</strong> <span id="p25Price" class="price-val">0€</span></li>
+              <li><strong>Prix P50 (Haut):</strong> <span id="p50Price" class="price-val">0€</span></li>
+              <li><strong>Prix Moyen:</strong> <span id="avgPrice" class="price-val">0€</span></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Product Grid Container -->
+        <div class="content-area">
+          <div class="deals-header">
+            <h2>Les meilleures promos LEGO® du moment</h2>
+            <p>Retrouvez toutes les boîtes LEGO® en promotion ou en déstockage. Les prix sont mis à jour en temps réel.</p>
+          </div>
+
+          <div id="deals-container" class="products-grid">
+            <!-- Deals injected via portfolio.js -->
+          </div>
+
+          <!-- Vinted Sales Section -->
           <div class="sales-section">
-            <h2 class="section-title">Vinted Market Data <small>(Current Set)</small></h2>
+            <h2 class="sales-title">Marché de l'Occasion - Annonces Vinted</h2>
             <div id="sales-container" class="sales-grid">
-              <!-- Sales injected here via js -->
+              <!-- Sales injected via portfolio.js -->
             </div>
           </div>
-        </section>
+        </div>
       </div>
     </main>
+
+    <footer class="adlb-footer">
+      <p>© 2026 Theo's Legos - Le comparateur de prix 100% LEGO®</p>
+    </footer>
 
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>
