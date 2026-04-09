@@ -72,6 +72,25 @@ function setupEventListeners() {
       loadSalesForSet(selectedSetId);
     }
   });
+
+  // Scrape Deals
+  const scrapeBtn = document.getElementById('scrape-deals');
+  if (scrapeBtn) {
+    scrapeBtn.addEventListener('click', async () => {
+      try {
+        scrapeBtn.textContent = 'Scraping en cours... ⏳';
+        scrapeBtn.style.opacity = '0.7';
+        const response = await fetch(`${API_BASE}/scrape/deals`, { method: 'POST' });
+        const res = await response.json();
+        alert(`Scraping terminé! ${res.count || 0} deals récupérés.`);
+        window.location.reload();
+      } catch(err) {
+        alert('Erreur: Le serveur backend (node api.js) est-il démarré ?');
+        scrapeBtn.textContent = 'Scraper Dealabs maintenant';
+        scrapeBtn.style.opacity = '1';
+      }
+    });
+  }
 }
 
 async function filterDeals(filters) {
@@ -121,13 +140,12 @@ function displayDeals() {
     const dealDiv = document.createElement('div');
     dealDiv.className = 'deal';
     dealDiv.innerHTML = `
+      <img src="${deal.photo}" onerror="this.src='https://via.placeholder.com/200?text=Pas+d+image'" alt="${deal.title}">
+      <span class="discount-badge">-${deal.discount}%</span>
       <h3>${deal.title}</h3>
-      <img src="${deal.photo}" alt="${deal.title}">
-      <p>Price: €${deal.price} (was €${deal.retail})</p>
-      <p>Discount: ${deal.discount}%</p>
-      <p>Temperature: ${deal.temperature}</p>
-      <p>Comments: ${deal.comments}</p>
-      <a href="${deal.link}" target="_blank">View Deal</a>
+      <p class="price-line">Prix: <span class="val">€${deal.price}</span> <del>(€${deal.retail})</del></p>
+      <p class="stats-line">🔥 ${deal.temperature}° &nbsp;|&nbsp; 💬 ${deal.comments}</p>
+      <a href="${deal.link}" class="btn-deal" target="_blank">Voir l'offre</a>
     `;
     container.appendChild(dealDiv);
   });

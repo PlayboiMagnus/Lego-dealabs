@@ -8,23 +8,9 @@
     "temperature": 150,
     "photo": "https://example.com/lego12345.jpg",
     "comments": 10,
-    "published": 1774289098.327,
+    "published": 1775733085.987,
     "title": "Lego Set 12345 at 20% off",
     "id": "12345",
-    "community": "dealabs"
-  },
-  {
-    "_id": "deal2",
-    "link": "https://www.dealabs.com/bons-plans/lego-67890",
-    "retail": 200,
-    "price": 150,
-    "discount": 25,
-    "temperature": 200,
-    "photo": "https://example.com/lego67890.jpg",
-    "comments": 5,
-    "published": 1774289098.327,
-    "title": "Lego Set 67890 at 25% off",
-    "id": "67890",
     "community": "dealabs"
   }
 ]
