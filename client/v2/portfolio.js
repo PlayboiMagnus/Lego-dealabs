@@ -77,8 +77,10 @@ function setupEventListeners() {
 async function filterDeals(filters) {
   try {
     const params = new URLSearchParams(filters);
-    const response = await fetch(`${API_BASE}/deals/search?${params}`);
-    currentDeals = await response.json();
+    // passing limit=100 so client pagination doesn't break
+    const response = await fetch(`${API_BASE}/deals/search?limit=100&${params}`);
+    const body = await response.json();
+    currentDeals = body.results || [];
     displayDeals();
   } catch (error) {
     console.error('Failed to filter deals:', error);
@@ -87,8 +89,9 @@ async function filterDeals(filters) {
 
 async function sortDeals(sortBy) {
   try {
-    const response = await fetch(`${API_BASE}/deals/search?sort=${sortBy}`);
-    currentDeals = await response.json();
+    const response = await fetch(`${API_BASE}/deals/search?limit=100&sort=${sortBy}`);
+    const body = await response.json();
+    currentDeals = body.results || [];
     displayDeals();
   } catch (error) {
     console.error('Failed to sort deals:', error);

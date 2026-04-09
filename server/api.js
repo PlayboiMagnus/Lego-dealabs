@@ -92,29 +92,53 @@ app.get('/deals/:id', (req, res) => {
 app.get('/deals/search', (req, res) => {
   let filtered = [...deals];
 
-  // Filter by discount
+  // Filter by price
+  if (req.query.price) {
+    filtered = filtered.filter(d => d.price <= parseFloat(req.query.price));
+  }
+
+  // Filter by date
+  if (req.query.date) {
+    const filterDate = new Date(req.query.date).getTime();
+    filtered = filtered.filter(d => {
+      const dDate = typeof d.published === 'number' && String(d.published).length === 10 ? d.published * 1000 : new Date(d.published).getTime();
+      return dDate >= filterDate;
+    });
+  }
+
+  // Filter by 'filterBy' param from project specs
+  if (req.query.filterBy === 'best-discount') {
+    filtered = filtered.filter(d => d.discount >= 50);
+  } else if (req.query.filterBy === 'most-commented') {
+    filtered = filtered.filter(d => d.comments > 15);
+  }
+
+  // Original compatibility logic
   if (req.query.minDiscount) {
     filtered = filtered.filter(d => d.discount >= parseInt(req.query.minDiscount));
   }
-
-  // Filter by temperature
   if (req.query.minTemp) {
     filtered = filtered.filter(d => d.temperature >= parseInt(req.query.minTemp));
   }
 
-  // Sort
-  if (req.query.sort === 'price-asc') {
+  // Sort by price ascending as requested by default
+  if (!req.query.sort || req.query.sort === 'price-asc') {
     filtered.sort((a, b) => a.price - b.price);
   } else if (req.query.sort === 'price-desc') {
     filtered.sort((a, b) => b.price - a.price);
   }
 
-  // Limit
-  if (req.query.limit) {
-    filtered = filtered.slice(0, parseInt(req.query.limit));
-  }
+  // Limit / Page
+  const limit = req.query.limit ? parseInt(req.query.limit) : 12;
+  const page = req.query.page ? parseInt(req.query.page) : 1;
+  const startIndex = (page - 1) * limit;
+  const paginated = filtered.slice(startIndex, startIndex + limit);
 
-  res.json(filtered);
+  res.json({
+    limit: limit,
+    total: filtered.length,
+    results: paginated
+  });
 });
 
 // GET /sales/search - Search sales
