@@ -96,12 +96,22 @@ Simply navigate to `client/v2/` in your File Explorer and **double-click** the `
 - `POST /scrape/deals` - Scrape new deals
 - `POST /scrape/sales/:setId` - Scrape sales for a set
 
-### Usage
+## 📖 Usage Guide
 
-1. The main interface loads deals from the API
-2. Use filters to find deals with high discounts or hot deals
-3. Select a Lego set ID and load sales data to compare prices
-4. View price statistics to determine if a deal is profitable
+Once the application is running, here is how you can use the Lego Dealabs Searching Project to identify the best investment opportunities:
+
+### 1. Browse and Filter Deals 🛍️
+- When you open the frontend interface, the application will display a list of current Lego deals scraped from Dealabs.
+- Use the provided filters to narrow down the deals based on your budget, highest discounts, or best temperature (hottest deals).
+- You can also search for a specific Lego set by entering its official Set ID.
+
+### 2. Cross-Reference with Vinted Sales ⚖️
+- The true power of this project lies in market arbitrage. Select a Lego deal to initiate a search for recent sales of the identical set on Vinted.
+- The interface compares the active Dealabs set price directly with the real-world market prices observed on Vinted.
+
+### 3. Evaluate Profitability and ROI 💰
+- By reviewing the compiled statistics (average price, median price, highest sale), you can determine the margin you are likely to make.
+- If the Dealabs price is substantially lower than what the set successfully sells for on Vinted, you have found a profitable Lego set to invest in!
 
 ## �📝 Licence
 
