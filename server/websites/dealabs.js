@@ -17,18 +17,34 @@ const parse = data => {
           const link = thread.shareableLink || `https://www.dealabs.com/bons-plans/${thread.titleSlug}-${thread.threadId}`;
           const photo = thread.mainImage ? `https://static.dealabs.com/threads/raw/${thread.mainImage.slotId}/${thread.mainImage.name}.${thread.mainImage.ext}` : null;
           
-          deals.push({
-            discount: thread.percentage || 0,
-            link,
-            price: thread.price || 0,
-            retail: thread.nextBestPrice || thread.price,
-            temperature: thread.temperature || 0,
-            comments: thread.commentCount || 0,
-            photo,
-            title: thread.title,
-            id: thread.threadId.toString(),
-            uuid: uuidv5(link, uuidv5.URL)
-          });
+          let price = thread.price || 0;
+          let retail = thread.nextBestPrice || thread.price || 0;
+          let discount = thread.percentage || 0;
+          
+          if (!discount && retail > price) {
+            discount = Math.round(((retail - price) / retail) * 100);
+          }
+          
+          // Use regex to locate the official 5-digit Lego Set ID in the title
+          const title = thread.title || "";
+          const legoIdMatch = title.match(/\b\d{5}\b/);
+          const setId = legoIdMatch ? legoIdMatch[0] : thread.threadId.toString();
+
+          // Only push legitimate deals (discount > 0)
+          if (discount > 0) {
+            deals.push({
+              discount,
+              link,
+              price,
+              retail,
+              temperature: thread.temperature || 0,
+              comments: thread.commentCount || 0,
+              photo,
+              title,
+              id: setId,
+              uuid: uuidv5(link, uuidv5.URL)
+            });
+          }
         }
       } catch (e) {
         // ignore parsing errors on specific articles
