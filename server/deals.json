@@ -4,36 +4,42 @@
     "link": "https://www.dealabs.com/share-deal/3313323",
     "price": 12.04,
     "retail": 15.99,
-    "temperature": 71.08,
+    "temperature": 73.48,
     "comments": 0,
     "photo": "https://static.dealabs.com/threads/raw/nUnB1/3313323_1.jpg",
     "title": "Lego City 60415 - La course poursuite entre la voiture de police et la super voiture",
     "id": "60415",
-    "uuid": "573bcadb-1e1b-5aa5-b45b-49aa32e1a00f"
+    "uuid": "573bcadb-1e1b-5aa5-b45b-49aa32e1a00f",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
     "link": "https://www.dealabs.com/share-deal/3313071",
     "price": 38.85,
     "retail": 51.8,
-    "temperature": 144.16,
+    "temperature": 147.56,
     "comments": 0,
     "photo": "https://static.dealabs.com/threads/raw/NqjDO/3313071_1.raw",
     "title": "Jeu de construction Lego Disney 43217 - La Maison de « Là-Haut » (via 12.95€ de fidélité, sélection de villes)",
     "id": "43217",
-    "uuid": "a37ae6e0-c74a-552f-a250-1d85c657da06"
+    "uuid": "a37ae6e0-c74a-552f-a250-1d85c657da06",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 14,
     "link": "https://www.dealabs.com/share-deal/3313035",
     "price": 59.99,
     "retail": 69.99,
-    "temperature": -51.65,
+    "temperature": -53.05,
     "comments": 5,
     "photo": "https://static.dealabs.com/threads/raw/TP4lK/3313035_1.raw",
     "title": "LEGO Batman : L’Héritage du Chevalier Noir (Switch 2) en précommande à 59,99€ chez Carrefour + bonus de précommande + 5 euros de bon d'achat",
     "id": "3313035",
-    "uuid": "d98faa64-fb65-5089-ba62-102d154f3df6"
+    "uuid": "d98faa64-fb65-5089-ba62-102d154f3df6",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 23,
@@ -45,7 +51,9 @@
     "photo": "https://static.dealabs.com/threads/raw/kTUPb/3312948_1.jpg",
     "title": "Sélection de LEGO One Piece en précommande - Ex : LEGO One Piece 75645 Bataille au château de Drum, 1038 pièces 6 minifigurines",
     "id": "75645",
-    "uuid": "75079efd-f818-53d0-8de9-e109c8c69ddb"
+    "uuid": "75079efd-f818-53d0-8de9-e109c8c69ddb",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 20,
@@ -57,7 +65,9 @@
     "photo": "https://static.dealabs.com/threads/raw/kM3Ll/3312696_1.raw",
     "title": "Lego Ninjago 71837 Ateliers Ninjago City",
     "id": "71837",
-    "uuid": "6f2b8be9-f797-502a-a8bc-b2539107ef9a"
+    "uuid": "6f2b8be9-f797-502a-a8bc-b2539107ef9a",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 30,
@@ -65,11 +75,13 @@
     "price": 56,
     "retail": 80,
     "temperature": 189.32,
-    "comments": 8,
+    "comments": 9,
     "photo": "https://static.dealabs.com/threads/raw/zBqnQ/3312673_1.raw",
     "title": "Jeu de construction Lego Star Wars 75376 - Tantive IV",
     "id": "75376",
-    "uuid": "852d9447-c390-56a9-b475-14eb486d2471"
+    "uuid": "852d9447-c390-56a9-b475-14eb486d2471",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
@@ -81,7 +93,9 @@
     "photo": "https://static.dealabs.com/threads/raw/me26a/3312554_1.jpg",
     "title": "Jeu de construction Lego City (60238) - Les Aiguillages (via 3.75€ en Tickets E.Leclerc )",
     "id": "60238",
-    "uuid": "80a5d7d7-df7d-51bf-b4a4-4d3ac8d34358"
+    "uuid": "80a5d7d7-df7d-51bf-b4a4-4d3ac8d34358",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
@@ -93,7 +107,9 @@
     "photo": "https://static.dealabs.com/threads/raw/gSoF6/3312236_1.jpg",
     "title": "LEGO City 60471 - Le Camion Scientifique des Explorateurs en Arctique, 1064 pièces 5 minifigurines",
     "id": "60471",
-    "uuid": "7e4311c3-49a9-55a0-ae2f-3f07e6722f66"
+    "uuid": "7e4311c3-49a9-55a0-ae2f-3f07e6722f66",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 44,
@@ -105,7 +121,9 @@
     "photo": "https://static.dealabs.com/threads/raw/WVzSH/3312216_1.jpg",
     "title": "Lego City 60423 Le Tramway et la Station de Centre Ville",
     "id": "60423",
-    "uuid": "6713c90c-474b-50ae-92e9-4188b998d35e"
+    "uuid": "6713c90c-474b-50ae-92e9-4188b998d35e",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 28,
@@ -117,7 +135,9 @@
     "photo": "https://static.dealabs.com/threads/raw/6wxCC/3312201_1.raw",
     "title": "Lego Super Mario 72042 Prince Florian & Château de Bowser (44,99€ pour les nouveaux clients)",
     "id": "72042",
-    "uuid": "a50f428d-2659-56b5-8e79-c77cac121d1e"
+    "uuid": "a50f428d-2659-56b5-8e79-c77cac121d1e",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
@@ -129,7 +149,9 @@
     "photo": "https://static.dealabs.com/threads/raw/x8J6i/3312197_1.raw",
     "title": "Lego Technic 42209 La Chargeuse sur Pneus Volvo L120 Electric",
     "id": "42209",
-    "uuid": "ba7ea8e3-14e8-5867-8220-c65de250f132"
+    "uuid": "ba7ea8e3-14e8-5867-8220-c65de250f132",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
@@ -141,7 +163,9 @@
     "photo": "https://static.dealabs.com/threads/raw/subfL/3312186_1.jpg",
     "title": "Lego Harry Potter 76467 La Maison de Luna Lovegood (49,99€ pour les Nouveaux Clients)",
     "id": "76467",
-    "uuid": "c370e0b3-a0c9-581f-ae20-a6f95d928cb6"
+    "uuid": "c370e0b3-a0c9-581f-ae20-a6f95d928cb6",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 27,
@@ -153,7 +177,9 @@
     "photo": "https://static.dealabs.com/threads/raw/PD62F/3312182_1.jpg",
     "title": "Lego DC Batman 76304 - Batmobile Batman Forever (44,99€ pour les Nouveaux Clients)",
     "id": "76304",
-    "uuid": "11620b14-55f0-589e-9c3c-55a870f45848"
+    "uuid": "11620b14-55f0-589e-9c3c-55a870f45848",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 26,
@@ -165,7 +191,9 @@
     "photo": "https://static.dealabs.com/threads/raw/se8dT/3312177_1.raw",
     "title": "Lego Harry Potter 76463 Le Château de Poudlard L’Infirmerie",
     "id": "76463",
-    "uuid": "55e40e21-e892-5e12-9d4c-65b8c634ad12"
+    "uuid": "55e40e21-e892-5e12-9d4c-65b8c634ad12",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 29,
@@ -177,7 +205,9 @@
     "photo": "https://static.dealabs.com/threads/raw/9Z5iH/3312171_1.raw",
     "title": "Lego Super Mario 72039 Mario Kart Château de Bowser",
     "id": "72039",
-    "uuid": "2bbf3546-4c71-5ec4-b06d-aa6b8eab8806"
+    "uuid": "2bbf3546-4c71-5ec4-b06d-aa6b8eab8806",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 25,
@@ -189,7 +219,9 @@
     "photo": "https://static.dealabs.com/threads/raw/WrPed/3312169_1.jpg",
     "title": "Lego Star Wars 75379 R2-D2 (49,99€ pour les Nouveaux Clients)",
     "id": "75379",
-    "uuid": "ee46fcd3-592f-51c7-99c6-13b201c4be5e"
+    "uuid": "ee46fcd3-592f-51c7-99c6-13b201c4be5e",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 30,
@@ -201,7 +233,9 @@
     "photo": "https://static.dealabs.com/threads/raw/3s2hR/3312167_1.raw",
     "title": "Lego Harry Potter 76451 - Privet Drive : La visite de tante Marge",
     "id": "76451",
-    "uuid": "68f54202-2d23-5631-8a60-848aafc2ca57"
+    "uuid": "68f54202-2d23-5631-8a60-848aafc2ca57",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 31,
@@ -213,7 +247,9 @@
     "photo": "https://static.dealabs.com/threads/raw/UVEu4/3312165_1.raw",
     "title": "Lego One Piece 75638 - La Bataille d’Arlong Park",
     "id": "75638",
-    "uuid": "7b2eabe5-fa42-5e03-8b72-d93a801b77aa"
+    "uuid": "7b2eabe5-fa42-5e03-8b72-d93a801b77aa",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 26,
@@ -225,7 +261,9 @@
     "photo": "https://static.dealabs.com/threads/raw/XOdIu/3312153_1.jpg",
     "title": "Lego Ninjago 71858 15e Anniversaire La Forge des Quatre Armes",
     "id": "71858",
-    "uuid": "deaa2907-cde8-5523-a2d7-d775955c6cac"
+    "uuid": "deaa2907-cde8-5523-a2d7-d775955c6cac",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 32,
@@ -237,7 +275,9 @@
     "photo": "https://static.dealabs.com/threads/raw/ZEccb/3312149_1.jpg",
     "title": "Lego Harry Potter 76470 La Ford Anglia Ensorcelée",
     "id": "76470",
-    "uuid": "b6e501b7-7f3f-56b5-a9da-237bbf5a1a24"
+    "uuid": "b6e501b7-7f3f-56b5-a9da-237bbf5a1a24",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 29,
@@ -249,7 +289,9 @@
     "photo": "https://static.dealabs.com/threads/raw/cu70Y/3312147_1.jpg",
     "title": "LEGO Star Wars 75434 Andor K-2SO le Droïde de Sécurité",
     "id": "75434",
-    "uuid": "942349df-77aa-58e7-ba66-9d766764ed48"
+    "uuid": "942349df-77aa-58e7-ba66-9d766764ed48",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 26,
@@ -261,7 +303,9 @@
     "photo": "https://static.dealabs.com/threads/raw/zvoTg/3312142_1.jpg",
     "title": "LEGO Star Wars : The Mandalorian 75403 Grogu et son landau",
     "id": "75403",
-    "uuid": "509846a2-7152-5036-bd62-473969cf42c5"
+    "uuid": "509846a2-7152-5036-bd62-473969cf42c5",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 29,
@@ -273,7 +317,9 @@
     "photo": "https://static.dealabs.com/threads/raw/aTsEM/3312140_1.jpg",
     "title": "Lego Creator 3-en-1 31167 Le Manoir Hanté",
     "id": "31167",
-    "uuid": "181091d9-fc6e-501d-96cb-2311f61c0fb1"
+    "uuid": "181091d9-fc6e-501d-96cb-2311f61c0fb1",
+    "vinted_price": 0,
+    "profitability": 0
   },
   {
     "discount": 29,
@@ -285,6 +331,8 @@
     "photo": "https://static.dealabs.com/threads/raw/BAOb9/3312139_1.jpg",
     "title": "LEGO Star Wars 75452 Droïde Astromécano BB-8",
     "id": "75452",
-    "uuid": "a56736b3-10d0-5bf9-ac68-3beaa03acfc9"
+    "uuid": "a56736b3-10d0-5bf9-ac68-3beaa03acfc9",
+    "vinted_price": 0,
+    "profitability": 0
   }
 ]

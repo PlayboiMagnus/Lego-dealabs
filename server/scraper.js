@@ -5,43 +5,41 @@ const path = require('path');
 const dealabs = require('./websites/dealabs');
 const vinted = require('./websites/vinted');
 
-// Mock data for demonstration
-const mockDeals = [
-  {
-    "_id": "deal1",
-    "link": "https://www.dealabs.com/bons-plans/lego-12345",
-    "retail": 100,
-    "price": 80,
-    "discount": 20,
-    "temperature": 150,
-    "photo": "https://example.com/lego12345.jpg",
-    "comments": 10,
-    "published": Date.now() / 1000,
-    "title": "Lego Set 12345 at 20% off",
-    "id": "12345",
-    "community": "dealabs"
-  }
-];
-
-const mockSales = [
-  {
-    "_id": "sale1",
-    "link": "https://www.vinted.fr/items/12345-lego-12345",
-    "price": 85,
-    "title": "Lego 12345 used",
-    "published": Date.now() / 1000
-  }
-];
-
 // Scrape deals from Dealabs
 async function scrapeDeals() {
   console.log('Scraping deals from Dealabs...');
   const deals = await dealabs.scrape('https://www.dealabs.com/groupe/lego');
+  
   if (deals && deals.length > 0) {
+    console.log(`Found ${deals.length} deals. Processing Vinted cross-references...`);
+    // Enrich with Vinted data sequentially
+    for (const deal of deals) {
+      if (deal.id && deal.id.match(/^\d{5}$/)) { // If it's a valid 5-digit Lego ID
+        try {
+          const sales = await scrapeSales(deal.id);
+          if (sales && sales.length > 0) {
+            const prices = sales.map(s => s.price).sort((a,b) => a - b);
+            const p50 = prices[Math.floor(prices.length * 0.5)] || 0;
+            deal.vinted_price = p50;
+            deal.profitability = Math.max(0, p50 - deal.price); // Profit amount
+          } else {
+            deal.vinted_price = 0;
+            deal.profitability = 0;
+          }
+        } catch (e) {
+          console.error(`Error cross-referencing ${deal.id}: `, e.message);
+          deal.vinted_price = 0;
+          deal.profitability = 0;
+        }
+      } else {
+        deal.vinted_price = 0;
+        deal.profitability = 0;
+      }
+    }
     return deals;
   }
-  console.log('Warning: No deals scraped from Dealabs. Returning mock fallback data...');
-  return mockDeals;
+  console.log('Warning: No deals scraped from Dealabs.');
+  return [];
 }
 
 // Scrape sales from Vinted
@@ -51,8 +49,8 @@ async function scrapeSales(setId) {
   if (sales && sales.length > 0) {
     return sales;
   }
-  console.log('Warning: Vinted returned no data (likely missing cookie). Using mock fallback data...');
-  return mockSales.filter(sale => sale.title.includes(setId));
+  console.log('Warning: Vinted returned no data.');
+  return [];
 }
 
 // Save data to JSON files

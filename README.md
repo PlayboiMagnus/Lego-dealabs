@@ -55,6 +55,22 @@ This project implements a web application that scrapes Lego deals from Dealabs a
 - Node.js (v14 or higher)
 - npm
 
+### 🍪 Vinted Cookie Setup (Required for Arbitrage)
+
+Vinted uses anti-bot protections. To allow the backend to cross-reference prices automatically, you **must** provide your personal session cookie:
+
+1. Open your browser natively and go to **Vinted.fr**.
+2. Accept the cookie consent pop-up and log into your account.
+3. Open the **Developer Tools** (Press `F12` or right-click -> **Inspect**).
+4. Go to the **Network** tab and refresh the page (`F5`).
+5. Click on the very first request in the list (usually named `vinted.fr`).
+6. Scroll down the right panel to the **Request Headers** section.
+7. Right-click the massive string next to `cookie: ` and select **Copy value**.
+8. Open `server/websites/vinted.js` and paste that string into the constant at the top:
+   ```javascript
+   const COOKIE = "PASTE_YOUR_LONG_COOKIE_HERE";
+   ```
+
 ### Installation and Startup 🚀
 
 **Step 1: Start the Backend server**

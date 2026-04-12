@@ -136,16 +136,31 @@ function displayDeals() {
   const end = start + itemsPerPage;
   const dealsToShow = currentDeals.slice(start, end);
 
-  dealsToShow.forEach(deal => {
+   dealsToShow.forEach(deal => {
     const dealDiv = document.createElement('div');
     dealDiv.className = 'deal';
+    
+    // Create profit badge HTML
+    let profitHtml = '';
+    if (deal.profitability && deal.profitability > 0) {
+      profitHtml = `<div style="color: #4CAF50; font-weight: bold; margin-top: 5px;">🟢 Bon Deal (Profit: +€${deal.profitability.toFixed(2)})</div>`;
+    } else if (deal.vinted_price > 0 && deal.profitability <= 0) {
+      profitHtml = `<div style="color: #ff5252; margin-top: 5px;">🔴 Pas de profit (Vinted: €${deal.vinted_price})</div>`;
+    } else {
+      profitHtml = `<div style="color: #ffa500; margin-top: 5px;">⚠️ Prix Vinted non récupéré</div>`;
+    }
+
     dealDiv.innerHTML = `
       <img src="${deal.photo}" onerror="this.src='https://via.placeholder.com/200?text=Pas+d+image'" alt="${deal.title}">
       <span class="discount-badge">-${deal.discount}%</span>
       <h3>${deal.title}</h3>
       <p class="price-line">Prix: <span class="val">€${deal.price}</span> <del>(€${deal.retail})</del></p>
+      ${profitHtml}
       <p class="stats-line">🔥 ${deal.temperature}° &nbsp;|&nbsp; 💬 ${deal.comments}</p>
-      <a href="${deal.link}" class="btn-deal" target="_blank">Voir l'offre</a>
+      <div style="display: flex; gap: 5px; margin-top: 10px;">
+        <a href="${deal.link}" class="btn-deal" target="_blank" style="flex: 1;">Voir l'offre</a>
+        <a href="https://www.vinted.fr/catalog?search_text=lego%20${deal.id}" class="btn-deal" target="_blank" style="flex: 1; background-color: #09b1ba; color: white;">Prix Vinted</a>
+      </div>
     `;
     container.appendChild(dealDiv);
   });

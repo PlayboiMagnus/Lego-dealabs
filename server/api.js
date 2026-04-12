@@ -136,6 +136,8 @@ app.get('/deals/search', (req, res) => {
     filtered.sort((a, b) => a.price - b.price);
   } else if (req.query.sort === 'price-desc') {
     filtered.sort((a, b) => b.price - a.price);
+  } else if (req.query.sort === 'profit-desc') {
+    filtered.sort((a, b) => (b.profitability || 0) - (a.profitability || 0));
   }
 
   // Limit / Page
